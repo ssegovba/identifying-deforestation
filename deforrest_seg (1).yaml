@@ -1,0 +1,12 @@
+
+# YOLOv5 dataset configuration (custom use)
+
+# Paths to images and masks
+train: /content/drive/Shareddrives/computer-vision-project/Data/Unzipped/planet/planet/train_seg_tagged
+val: /content/drive/Shareddrives/computer-vision-project/Data/Unzipped/planet/planet/test-jpg
+
+# Number of classes
+nc: 2  # Number of classes
+
+# Class names
+names: ['background', 'primary']
