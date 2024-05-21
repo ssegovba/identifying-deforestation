@@ -1,12 +1,10 @@
+# Paths for dataset root and subsets
+path: /Users/kieranmartin/Desktop/Spring 2024/Computer_Vision_Deep_Learning/Final Project/datasets/identdeforest  # dataset root dir
+train: train_seg_tagged  # train images (relative to 'path')
+val: val_seg_tagged  # val images (relative to 'path')
+test: test  # test images (relative to 'path')
 
-# YOLOv5 dataset configuration (custom use)
-
-# Paths to images and masks
-train: /content/drive/Shareddrives/computer-vision-project/Data/Unzipped/planet/planet/train_seg_tagged
-val: /content/drive/Shareddrives/computer-vision-project/Data/Unzipped/planet/planet/test-jpg
-
-# Number of classes
-nc: 2  # Number of classes
-
-# Class names
-names: ['background', 'primary']
+# Classes
+nc: 1
+names:
+  0: primary
