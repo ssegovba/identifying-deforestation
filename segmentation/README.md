@@ -9,16 +9,29 @@ To build a dataset of around 200 images with balanced weather condition tags, we
 
 A total of 47 training images and 42 validation images were manually tagged using LabelMe. During tagging, a Python function was created to take the image name as an argument and return the list of classes tagged in that image, aiding in accurate observation and tagging.
 
-Figure 10.
+<figure>
+  <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure10.jpg" alt="Figure 10" style="width:50%">
+  <figcaption>Figure 10: An example image showing the output of the project.</figcaption>
+</figure>
+
+<p></p>
 
 
+**Limitations**
 
-Limitations
 Some images were too obscure to tag accurately, particularly those labeled as "Haze" as shown above. We tried to include as many cloudy and hazy images as possible, but in some cases, it was impossible to discern where the forest started and stopped as shown in Figure 10.
 
 For future research, the tagging process could involve capturing three examples of the same coordinates under different weather conditions: clear, cloudy, and hazy. However, this approach may face challenges if we need to detect deforestation day by day. For instance, if there is significant forest coverage loss over a week of clear weather, it would be difficult to use these clear images as ground truth when it becomes hazy. Additionally, using segmentation on non-clear images might be less effective. If clouds obscure areas where trees have been recently cut down, it would be impossible for both humans and machines to observe the changes, as all pixels in the area would appear white or light gray.
 
-Figure 11. Example of Labelme Image Tagging
+
+<figure>
+  <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure11.jpg" alt="Figure 11" style="width:50%">
+  <figcaption>Figure 11. Example of Labelme Image Tagging</figcaption>
+</figure>
+
+<p></p>
+
+
 
 Figure 11 shows the tagging process on a given image. The main areas of forestation are captured, however it is hard to tell if there are other trees present in the untagged areas or if there are other types of vegetation.
 Pretrained Model: YOLOv8n-Segmentation
@@ -31,7 +44,7 @@ The YOLOv8n-segmentation pretrained model algorithm involves a convolutional neu
 
 
 
-Results
+**Results**
 
 	   Figure 12.							Figure 13.
 
