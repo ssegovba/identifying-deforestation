@@ -25,13 +25,11 @@ For future research, the tagging process could involve capturing three examples 
 
 
 <figure>
-  <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure11.jpg" alt="Figure 11" style="width:50%">
+  <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure11.png" alt="Figure 11" style="width:50%">
   <figcaption>Figure 11. Example of Labelme Image Tagging</figcaption>
 </figure>
 
 <p></p>
-
-
 
 Figure 11 shows the tagging process on a given image. The main areas of forestation are captured, however it is hard to tell if there are other trees present in the untagged areas or if there are other types of vegetation.
 Pretrained Model: YOLOv8n-Segmentation
@@ -45,8 +43,16 @@ The YOLOv8n-segmentation pretrained model algorithm involves a convolutional neu
 
 
 **Results**
+<figure>
+  <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure12.png" alt="Figure 12" style="width:30%">
+  <figcaption>Figure 12</figcaption>
+</figure>
 
-	   Figure 12.							Figure 13.
+<figure>
+  <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure13.png" alt="Figure 13" style="width:30%">
+  <figcaption>Figure 13</figcaption>
+</figure>
+
 
 The BoxF1 curve evaluates an object detection model's performance based on bounding box predictions, measuring how well the model detects and localizes objects. It considers precision (correctly predicted positive bounding boxes to total predicted) and recall (correctly predicted positive bounding boxes to total ground truth). Figure 12 shows the BoxF1 curve with a maximum F1 score of around 0.36 at a confidence level of 0.239, indicating the best balance between precision and recall.
 
