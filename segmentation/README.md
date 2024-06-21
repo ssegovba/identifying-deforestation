@@ -79,7 +79,6 @@ Custom Yolov8n-Segmentation Model:
 
 To improve the performance of the YOLOv8n-segmentation model for identifying deforestation in satellite images, several modifications were made. The initial learning rate of 0.01, which caused unstable training, was adjusted to 0.001 for better convergence. The optimizer was switched to AdamW to enhance weight updates and generalization. The batch size was increased from 8 to 16 to stabilize gradient updates, and a dropout rate of 0.3 was introduced to prevent overfitting. A weight decay of 0.0005 was applied to penalize large weights and improve generalization. Data augmentation techniques such as random rotations, scaling, brightness/contrast adjustments, and Gaussian noise were applied using Albumentations to increase the model's robustness to variations in satellite imagery. These modifications aimed to enhance the model's accuracy and generalization capabilities in detecting deforestation by leading to a more stable and effective training process.
 
-Results
 <figure>
   <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure16.png" alt="Figure 16" style="width:50%">
   <figcaption><a href="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure16.png">Figure 16. BoxF1 curve</a></figcaption>
