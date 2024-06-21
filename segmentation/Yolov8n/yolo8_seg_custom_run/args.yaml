@@ -1,7 +1,7 @@
 task: segment
 mode: train
 model: yolov8n-seg.pt
-data: /Users/katherinemartin/Desktop/Spring 2024/Computer_Vision_Deep_Learning/Final
+data: /Users/kieranmartin/Desktop/Spring 2024/Computer_Vision_Deep_Learning/Final
   Project/yolov5/data/identdeforest.yaml
 epochs: 300
 time: null
