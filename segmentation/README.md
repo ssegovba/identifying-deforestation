@@ -1,12 +1,12 @@
-Navigation:
+# Navigation:
 
-Script to identify 200 images for Mask/Polyhgon labeling in label me: [segmentation_cleaning.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/segmentation_cleaning.ipynb)
+Script to identify 200 images for Mask/Polygon labeling in label me: [segmentation_cleaning.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/segmentation_cleaning.ipynb)
 
 [Training Data](https://github.com/ssegovba/identifying-deforestation/tree/main/segmentation/datasets/identdeforest/train_seg_tagged) |
 [Validation Data](https://github.com/ssegovba/identifying-deforestation/tree/main/segmentation/datasets/identdeforest/val_seg_tagged) |
 [Test Data](https://github.com/ssegovba/identifying-deforestation/tree/main/segmentation/datasets/identdeforest/test)
 
-YOLOv8: Object + Segmentation
+### YOLOv8: Object + Segmentation
 
 YOLO models require YAML file that specifies the paths for the training and vaidation data. Then for each training and validation image YOLO requires 1) A folder named "images" containing the image files, 2) A "labels" folder containing corresponding text file with the class labels and coordinates of the bounding boxes/polygons around each object
 
@@ -18,7 +18,7 @@ YOLO Models Training: [YOLOv8n_models_summary_train.ipynb](https://github.com/ss
 
 YOLO Model Testing: [Yolov8n/test_yolov8-seg.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Yolov8n/test_yolov8-seg.ipynb)
 
-U-NET: Semantic Segmentation
+### U-NET: Semantic Segmentation
 
 Create Masks from polygon coordinates stored in JSON files for every training and validation image: [segmentation_cleaning.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/segmentation_cleaning.ipynb)
 
@@ -33,9 +33,9 @@ Training script imports dataset.py and model.py: [train.py](https://github.com/s
 U-Net Model Testing, Need to read final model after training "best_unet_modelv2.pth" which is too big to upload on github: [Unet_test_visualizations.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Unet/Unet_test_visualizations.ipynb)
 
 
-Report:
-II.b Segmentation
-Methodology
+# Report:
+## II.b Segmentation
+### Methodology
 
 The primary objective was to identify deforestation through the presence of agricultural areas, as forests are often cleared for farming. We had to manually tag a group of images because the dataset was not tagged for segmentation. Initially, we planned to maintain the same classes, such as forest coverage, agriculture coverage, water, and roads, etc. Given our specific interest in forest coverage, we simplified the classes into a binary system: forest and non-forest. Man-made objects like mines and agriculture were grouped under the non-forest class, as they all indicate deforestation. This allowed us to apply a binary mask to the segmentation training images, streamlining the training process.
 
@@ -53,11 +53,11 @@ A total of 47 training images and 42 validation images were manually tagged usin
 <p></p>
 
 
-**Limitations**
+### Limitations
 
 Some images were too obscure to tag accurately, particularly those labeled as "Haze" as shown above. We tried to include as many cloudy and hazy images as possible, but in some cases, it was impossible to discern where the forest started and stopped as shown in Figure 10.
 
-For future research, the tagging process could involve capturing three examples of the same coordinates under different weather conditions: clear, cloudy, and hazy. However, this approach may face challenges if we need to detect deforestation day by day. For instance, if there is significant forest coverage loss over a week of clear weather, it would be difficult to use these clear images as ground truth when it becomes hazy. Additionally, using segmentation on non-clear images might be less effective. If clouds obscure areas where trees have been recently cut down, it would be impossible for both humans and machines to observe the changes, as all pixels in the area would appear white or light gray.
+For future research, the tagging process could involve capturing two examples of the same coordinates under different weather conditions: clear and hazy. However, this approach may face challenges if we need to detect deforestation day by day. For instance, if there is significant forest coverage loss over a week of clear weather, it would be difficult to use these clear images as ground truth when it becomes hazy or cloudy. Additionally, we wouldnt be able to use cloudy images because if clouds obscure areas where trees have been recently cut down, it would be impossible for both humans and machines to observe the changes, as all pixels in the area would appear white or light gray.
 
 <figure>
   <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure11.png" alt="Figure 11" style="width:50%">
@@ -67,17 +67,12 @@ For future research, the tagging process could involve capturing three examples 
 <p></p>
 
 Figure 11 shows the tagging process on a given image. The main areas of forestation are captured, however it is hard to tell if there are other trees present in the untagged areas or if there are other types of vegetation.
-Pretrained Model: YOLOv8n-Segmentation
+
+### Pretrained Model: YOLOv8n-Segmentation
 
 The YOLOv8n-segmentation pretrained model algorithm involves a convolutional neural network designed for object detection and segmentation. It consists of multiple convolutional layers followed by batch normalization and activation functions. The network uses anchor boxes to predict bounding boxes and class probabilities for each object in the image. For segmentation, it incorporates additional layers to output pixel-wise masks for each detected object. The model is trained on a large, diverse dataset, enabling it to generalize well across various segmentation tasks. It optimizes the detection and segmentation outputs using a combination of loss functions, including classification, localization, and mask losses.
 
-
-
-
-
-
-
-**Results**
+#### YOLO Results
 <figure>
   <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure12.png" alt="Figure 12" style="width:50%">
   <figcaption><a href="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure12.png">Figure 12</a></figcaption>
@@ -149,7 +144,7 @@ Despite the modifications to the YOLOv8n-segmentation model, the normalized conf
 
 The custom yolov8n-segmentation model performed very poorly on unseen data as pictured in Figure 19. For test images 4, 41, and 1, which were entirely forest coverage, the model failed to classify them as 100% primary, notably missing all primary in test image 1. In test image 7, which had only a small area of forest in the top right corner, the model over classified most of the image as primary. Test image 21 had accurate detection of forest areas but incorrectly classified much of the river as primary. In test image 26, the model struggled significantly, unable to clearly distinguish between primary and non-primary areas. This indicates that while the model can identify forest coverage, it requires further optimization to improve its accuracy and reduce false positives in mixed-content images.
 
-Challenger: Custom UNet
+### Challenger: Custom UNet
 
 In identifying deforestation in satellite images, our goal was purely segmentation. Given that Yolov8n-segmentation identifies objects and segments them, we hypothesized that UNet would be more accurate for our task. U-Net, a convolutional neural network architecture designed for biomedical image segmentation, has been successfully applied to other segmentation tasks. It features a contracting path (encoder) and an expansive path (decoder), allowing precise localization by combining high-level features with low-level features. UNet performs pixel-wise segmentation, essential for dense satellite images of forest coverage where distinct objects are not present. UNet was expected to perform better as it processes the entire image and produces a segmentation map assigning a class label to each pixel, unlike Mask R-CNN, which is designed for instance segmentation.
 
@@ -157,12 +152,13 @@ The custom U-Net model for satellite image segmentation uses an encoder-decoder 
 
 In subsequent tests, the batch size was increased to 8 to attempt to improve gradient estimation and stabilize training. However, a larger batch size led to worse model performance, as indicated by increased validation loss and decreased accuracy. After testing learning rates of 0.001 and 0.005, we found that a learning rate of 0.0001 and introducing a learning rate scheduler led to finer adjustments in the model parameters during training, improving overall stability and performance.
 
-Data Transformations:
+#### Data Transformations:
 
 To preprocess the satellite images and corresponding segmentation masks for the U-Net model, we used the torchvision.transforms module. Images and masks were resized to 256x256 pixels to ensure uniform dimensions for batch processing, balancing computational efficiency and detail accuracy. The transforms.Resize((256, 256)) function was used for resizing, and transforms.ToTensor() was applied to convert the images and masks into PyTorch tensors, normalizing pixel values and adjusting the shape to the format expected by the U-Net model.
 
 We initially incorporated random horizontal flip, random vertical flip, and random rotation (10 degrees) to help the model learn spatial invariance and improve generalization. However, these augmentations introduced excessive noise and unrealistic variations, destabilizing the model. Removing the additional transformations led to a better-calibrated model, shifting the optimal threshold for predictions from 0.7 to around 0.3, indicating improved probability outputs.
 
+#### U-Net Results:
 
 <figure>
   <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure20.png" alt="Figure 20" style="width:50%">
@@ -199,7 +195,7 @@ Through the various improvements described, including adjusting hyperparameters,
 Figure 22 shows that test images 41, 21, and 1 were nearly perfect in accuracy. The results for test image 7 are particularly interesting due to the difference between thresholds 0.2 and 0.3. While the threshold of 0.3 correctly identified the primary areas, the spots classified as primary at a threshold of 0.2 might be trees or something else, making it challenging to interpret. Test image 4 demonstrates that the model struggles with cloud coverage. As mentioned in the limitations, it is unclear what lies beneath the clouds, making it difficult to determine if the area is forested or not, especially for new data outside our current test set. Test image 1, which is clear and entirely primary, required a threshold of 0.7 for accurate classification. This likely occurs because the model was not trained on images that are purely primary, making it less confident in identifying forest coverage without a comparative context. Test image 26 performed fairly well, considering the variety of classes present in the image.
 
 
-III. Model Operations
+# III. Model Operations
 <figure>
   <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure23.png" alt="Figure 23" style="width:80%">
   <figcaption><a href="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure23.png">Figure 23. MLOps Pipeline</a></figcaption>
