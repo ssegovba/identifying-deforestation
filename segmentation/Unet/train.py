@@ -146,7 +146,7 @@ def plot_f1_confidence_curve(all_targets, all_preds, epoch):
     plt.close()
 
 def main():
-    data_path = '/Users/katherinemartin/Desktop/Spring 2024/Computer_Vision_Deep_Learning/Final Project/datasets/identdeforest'
+    data_path = '/Users/kieranmartin/Desktop/Spring 2024/Computer_Vision_Deep_Learning/Final Project/datasets/identdeforest'
     train_images_dir = os.path.join(data_path, 'train_seg_tagged/images')
     train_masks_dir = os.path.join(data_path, 'train_seg_tagged/masks')
     val_images_dir = os.path.join(data_path, 'val_seg_tagged/images')
