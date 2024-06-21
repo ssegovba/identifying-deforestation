@@ -1,3 +1,39 @@
+Navigation:
+
+Script to identify 200 images for Mask/Polyhgon labeling in label me: [segmentation_cleaning.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/segmentation_cleaning.ipynb)
+
+[Training Data](https://github.com/ssegovba/identifying-deforestation/tree/main/segmentation/datasets/identdeforest/train_seg_tagged) |
+[Validation Data](https://github.com/ssegovba/identifying-deforestation/tree/main/segmentation/datasets/identdeforest/val_seg_tagged) |
+[Test Data](https://github.com/ssegovba/identifying-deforestation/tree/main/segmentation/datasets/identdeforest/test)
+
+YOLOv8: Object + Segmentation
+
+YOLO models require YAML file that specifies the paths for the training and vaidation data. Then for each training and validation image YOLO requires 1) A folder named "images" containing the image files, 2) A "labels" folder containing corresponding text file with the class labels and coordinates of the bounding boxes/polygons around each object
+
+Create YAML file: [create_yaml.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/create_yaml.ipynb)
+
+YOLO YAML file: [identdeforest.yaml](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/identdeforest.yaml) 
+
+YOLO Models Training: [YOLOv8n_models_summary_train.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Yolov8n/YOLOv8n_models_summary_train.ipynb)
+
+YOLO Model Testing: [Yolov8n/test_yolov8-seg.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Yolov8n/test_yolov8-seg.ipynb)
+
+U-NET: Semantic Segmentation
+
+Create Masks from polygon coordinates stored in JSON files for every training and validation image: [segmentation_cleaning.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/segmentation_cleaning.ipynb)
+
+Custom dataset class for PyTorch that loads images and their corresponding masks from "masks" and "images" directories and can apply optional transformations to these images/masks: [dataset.py](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Unet/dataset.py)
+
+Some Previous U-Net Model Versions: [Unet_model_summary.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Unet/Unet_model_summary.ipynb)
+
+U-Net Final Model define as Class in py-module: [model.py](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Unet/model.py) 
+
+Training script imports dataset.py and model.py: [train.py](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Unet/train.py)
+
+U-Net Model Testing, Need to read final model after training "best_unet_modelv2.pth" which is too big to upload on github: [Unet_test_visualizations.ipynb](https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/Unet/Unet_test_visualizations.ipynb)
+
+
+Report:
 II.b Segmentation
 Methodology
 
