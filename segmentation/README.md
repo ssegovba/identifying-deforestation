@@ -47,7 +47,7 @@ A total of 47 training images and 42 validation images were manually tagged usin
 
 <figure>
   <img src="https://github.com/ssegovba/identifying-deforestation/blob/main/segmentation/figures/figure10.jpg" alt="Figure 10" style="width:50%">
-  <figcaption>Figure 10: An example image showing the output of the project.</figcaption>
+  <figcaption>Figure 10: Example of Image where it is hard to tell where the forest coverage is for tagging.</figcaption>
 </figure>
 
 <p></p>
