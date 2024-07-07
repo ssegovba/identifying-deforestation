@@ -12,7 +12,7 @@ import numpy as np
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, precision_recall_curve, f1_score
 
 class EarlyStopping:
-    def __init__(self, patience=15, delta=0, save_path='best_model.pth'):
+    def __init__(self, patience=10, delta=0, save_path='best_model.pth'):
         self.patience = patience
         self.delta = delta
         self.counter = 0
