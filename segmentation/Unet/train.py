@@ -167,7 +167,7 @@ def main():
     train_loader = DataLoader(train_dataset, batch_size=4, shuffle=True)  # batch size > 4 results in worse preformance
     val_loader = DataLoader(val_dataset, batch_size=4, shuffle=False)  # Reduced batch size for small dataset
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = UNet(n_classes=1).to(device)
     criterion = torch.nn.BCELoss()
     optimizer = optim.Adam(model.parameters(), lr=0.0001)  # Reduced lr initially 0.001 then 0.005 lr
